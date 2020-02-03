@@ -1,0 +1,10 @@
+.App {
+text-align: center;
+}
+
+button{
+  background-color: lightblue;
+  width: 50%;
+  border: 0px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)
+}
