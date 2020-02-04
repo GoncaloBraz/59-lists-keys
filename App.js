@@ -34,8 +34,8 @@ class App extends Component {
     person.name = event.target.value;
     // SET THE NAME OF PERSON LIKE WAS BEEN PLACED IN INPUT TEXT
 
-    const persons = [...this.state.persons]; // SELECT THE STATE
-    persons[personIndex] = person; // CHANGE ONLY IT togglePersonsHandler MODIFICATIONS
+    const persons = [...this.state.persons]; // CREATE A COPY OF STATE
+    persons[personIndex] = person; // CHANGE ONLY THE MODIFICATIONS
     this.setState({
       persons: persons
     }); // SET NEW STATE
