@@ -4,7 +4,8 @@ import './Person.css'
 
 const person = props => {
   return (
-    <div className="Person" onClick={props.click}>
+    <div className="Person" >
+    <button className="deleteBtn" onClick={props.click}>X</button>
       <p>
         I'm a Person, my name is {props.name} and I am {props.age} years-old!
       </p>
@@ -13,7 +14,7 @@ const person = props => {
         Escreva aqui:
         <input
           type="text"
-          placeholder="O que está a pensar!"
+          
           onChange={props.changedPerson}
           value={props.name}
         />

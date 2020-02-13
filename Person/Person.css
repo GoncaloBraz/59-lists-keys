@@ -6,3 +6,11 @@
  text-align: center;
  background-color: lightgray
 }
+
+.deleteBtn{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+  float: right;
+  cursor: pointer
+}
