@@ -16,15 +16,18 @@ class App extends Component {
   };
 
   // REMOVE PERSONS FROM STATE
+
   deletePersonHandler = personIndex => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   };
+
   // CHANGE NAME OF PERSONS
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
+
     });
 
     const person = { ...this.state.persons[personIndex] };
@@ -34,6 +37,7 @@ class App extends Component {
     persons[personIndex] = person;
 
     this.setState({ persons: persons });
+
 
   };
   // SHOW HIDDEN PERSONS
@@ -59,13 +63,18 @@ class App extends Component {
           {this.state.persons.map((person, index) => {
             return (
               <Person
+                changedPerson={event =>
+                  this.nameChangedHandler(event, person.id)
+                }
                 name={person.name}
                 age={person.age}
+
                 click={() => this.deletePersonHandler(index)}
                 key={person.id}
                 changedPerson={event =>
                   this.nameChangedHandler(event, person.id)
                 }
+
               />
             );
           })}
