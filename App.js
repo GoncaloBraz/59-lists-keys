@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import "./App.css";
+import Radium from "radium";
 
+import "./App.css";
 import Person from "./Person/Person";
 
 class App extends Component {
@@ -16,7 +17,6 @@ class App extends Component {
   };
 
   // REMOVE PERSONS FROM STATE
-
   deletePersonHandler = personIndex => {
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
@@ -66,10 +66,34 @@ class App extends Component {
   render() {
     // INLINE STYLES
     const btnStyle = {
-      cursor: "pointer",
-      height: "50px"
+      off: {
+        cursor: "pointer",
+        height: "50px",
+        backgroundColor: "red",
+        transitionDuration: ".2s",
+        transitionTimingFunction: "ease-out",
+        fontWeight: 900,
+        ":hover": {
+          backgroundColor: "#f79d6d",
+          color: "yellow"
+        }
+      },
+      on: {
+        cursor: "pointer",
+        height: "50px",
+        backgroundColor: "green",
+        transitionDuration: ".2s",
+        transitionTimingFunction: "ease-out",
+        color: "white",
+        fontWeight: 900,
+        ":hover": {
+          backgroundColor: "lightgreen",
+          color: "yellow"
+        }
+      }
     };
 
+// DECLARATION OF VARIABLES
     let Persons = null;
     let classes = [];
     let otherState = this.state.otherState;
@@ -103,27 +127,27 @@ class App extends Component {
     }
     if (this.state.persons.length <= 1) {
       classes.push("bold");
+    } else {
+      classes.push("green");
     }
-    else{
-      classes.push("green")
-    }
-
-    console.log(classes);
 
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <button style={btnStyle} onClick={this.togglePersonsHandler}>
+        <button
+          style={this.state.showPersons ? btnStyle.on : btnStyle.off}
+          onClick={this.togglePersonsHandler}
+        >
           Switch Name
         </button>
         {Persons}
-        <p className={classes.join(' ')}>{otherState}</p>
+        <p className={classes.join(" ")}>{otherState}</p>
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);
 
 // App.js
 // Root component where our child-components will be rendered
