@@ -8,3 +8,20 @@ button{
   border: 0px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2)
 }
+
+.red{
+  color: red
+}
+
+.green{
+  color: green
+}
+
+.bold{
+  font-weight: 900;
+  background-color: yellow;
+  width: 300px;
+  height: 40px;
+  margin: 0 30%
+}
+
