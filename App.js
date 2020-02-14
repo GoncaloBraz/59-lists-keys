@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 import "./App.css";
 import Person from "./Person/Person";
@@ -93,7 +93,7 @@ class App extends Component {
       }
     };
 
-// DECLARATION OF VARIABLES
+    // DECLARATION OF VARIABLES
     let Persons = null;
     let classes = [];
     let otherState = this.state.otherState;
@@ -132,17 +132,19 @@ class App extends Component {
     }
 
     return (
-      <div className="App">
-        <h1>Hello World</h1>
-        <button
-          style={this.state.showPersons ? btnStyle.on : btnStyle.off}
-          onClick={this.togglePersonsHandler}
-        >
-          Switch Name
-        </button>
-        {Persons}
-        <p className={classes.join(" ")}>{otherState}</p>
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hello World</h1>
+          <button
+            style={this.state.showPersons ? btnStyle.on : btnStyle.off}
+            onClick={this.togglePersonsHandler}
+          >
+            Switch Name
+          </button>
+          {Persons}
+          <p className={classes.join(" ")}>{otherState}</p>
+        </div>
+      </StyleRoot>
     );
   }
 }
