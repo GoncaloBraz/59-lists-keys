@@ -27,19 +27,36 @@ class App extends Component {
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
-
     });
 
     const person = { ...this.state.persons[personIndex] };
-   
+
     person.name = event.target.value;
+
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
     this.setState({ persons: persons });
-
-
   };
+
+  ageChangedHandler = (event, id) => {
+    if (event.target.value < 0 || event.target.value > 99) {
+      return;
+    }
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+    const person = { ...this.state.persons[personIndex] };
+    const persons = [...this.state.persons];
+
+    person.age = event.target.value;
+    persons[personIndex] = person;
+
+    this.setState({
+      persons: persons
+    });
+  };
+
   // SHOW HIDDEN PERSONS
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
@@ -54,8 +71,8 @@ class App extends Component {
     };
 
     let Persons = null;
-
-    let classes = ["red", "green"];
+    let classes = [];
+    let otherState = this.state.otherState;
 
     if (this.state.showPersons) {
       Persons = (
@@ -66,15 +83,14 @@ class App extends Component {
                 changedPerson={event =>
                   this.nameChangedHandler(event, person.id)
                 }
+                changedAge={event => this.ageChangedHandler(event, person.id)}
                 name={person.name}
                 age={person.age}
-
                 click={() => this.deletePersonHandler(index)}
                 key={person.id}
                 changedPerson={event =>
                   this.nameChangedHandler(event, person.id)
                 }
-
               />
             );
           })}
@@ -83,10 +99,16 @@ class App extends Component {
     }
 
     if (this.state.persons.length <= 2) {
-      classes = classes[0];
-    } else {
-      classes = classes[1];
+      classes.push("red");
     }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
+    else{
+      classes.push("green")
+    }
+
+    console.log(classes);
 
     return (
       <div className="App">
@@ -95,7 +117,7 @@ class App extends Component {
           Switch Name
         </button>
         {Persons}
-        <h1 className={classes}>Checker</h1>
+        <p className={classes.join(' ')}>{otherState}</p>
       </div>
     );
   }
