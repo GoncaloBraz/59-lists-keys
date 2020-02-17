@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Radium, { StyleRoot } from "radium";
 
 import "./App.css";
 import Person from "./Person/Person";
@@ -132,7 +131,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+
         <div className="App">
           <h1>Hello World</h1>
           <button
@@ -144,12 +143,11 @@ class App extends Component {
           {Persons}
           <p className={classes.join(" ")}>{otherState}</p>
         </div>
-      </StyleRoot>
     );
   }
 }
 
-export default Radium(App);
+export default App;
 
 // App.js
 // Root component where our child-components will be rendered
