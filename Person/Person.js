@@ -12,8 +12,11 @@ const person = props => {
     padding: 16px;
     text-align: center;
     background-color: lightgray;
+    @media (min-width: 500px) {
+      width: 450px;
+    }
   `;
-  
+
   return (
     <Styled>
       <button className="deleteBtn" onClick={props.click}>

@@ -1,8 +1,23 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import styled from "styled-components";
 
 import "./App.css";
 import Person from "./Person/Person";
+
+const StyledButton = styled.button`
+        background-color: red;
+        color: white;
+        font: inherit;
+        border 1px solid black;
+        padding: 8px;
+        cursor: pointer;
+        
+        &:hover {
+          background-color: #f79d6d;
+          color: yellow
+        }
+`;
 
 class App extends Component {
   state = {
@@ -64,7 +79,7 @@ class App extends Component {
 
   render() {
     // INLINE STYLES
-    const btnStyle = {
+    /*     const btnStyle = {
       off: {
         cursor: "pointer",
         height: "50px",
@@ -90,7 +105,7 @@ class App extends Component {
           color: "yellow"
         }
       }
-    };
+    }; */
 
     // DECLARATION OF VARIABLES
     let Persons = null;
@@ -131,18 +146,14 @@ class App extends Component {
     }
 
     return (
-
-        <div className="App">
-          <h1>Hello World</h1>
-          <button
-            style={this.state.showPersons ? btnStyle.on : btnStyle.off}
-            onClick={this.togglePersonsHandler}
-          >
-            Switch Name
-          </button>
-          {Persons}
-          <p className={classes.join(" ")}>{otherState}</p>
-        </div>
+      <div className="App">
+        <h1>Hello World</h1>
+        <StyledButton onClick={this.togglePersonsHandler}>
+          Switch Name
+        </StyledButton>
+        {Persons}
+        <p className={classes.join(" ")}>{otherState}</p>
+      </div>
     );
   }
 }
