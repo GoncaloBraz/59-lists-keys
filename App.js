@@ -6,7 +6,7 @@ import "./App.css";
 import Person from "./Person/Person";
 
 const StyledButton = styled.button`
-        background-color: red;
+        background-color: ${props => props.alt ? 'green' : 'red'};
         color: white;
         font: inherit;
         border 1px solid black;
@@ -14,8 +14,8 @@ const StyledButton = styled.button`
         cursor: pointer;
         
         &:hover {
-          background-color: #f79d6d;
-          color: yellow
+          background-color: ${props => props.alt ? 'lightgreen' : 'salmon'};
+          color: ${props => props.alt ? 'yellow' : 'black'};
         }
 `;
 
@@ -148,7 +148,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <StyledButton onClick={this.togglePersonsHandler}>
+        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
           Switch Name
         </StyledButton>
         {Persons}
