@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 import Radium, { StyleRoot } from "radium";
 
+
 import "./Person.css";
 
 
@@ -12,6 +13,12 @@ const person = props => {
       width: '450px'
     }
   };
+
+  const random = Math.random()
+
+  if(random > 0.7){
+    return <ErrorBoundary/>
+  }
   return (
     <StyleRoot>
       <div className="Person" style={style}>
