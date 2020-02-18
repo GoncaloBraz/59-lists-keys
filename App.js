@@ -131,6 +131,7 @@ class App extends Component {
       classes.push("green");
     }
 
+
     return (
       <StyleRoot>
         <div className="App">
@@ -153,3 +154,10 @@ export default Radium(App);
 
 // App.js
 // Root component where our child-components will be rendered
+
+
+
+/*     const head = arr => arr.length > 0 ? arr[1] : "nothing to see" 
+    const myArray = []
+    const firstPerson = head(myArray)
+    console.log(firstPerson) */
