@@ -1,23 +1,9 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import styled from "styled-components";
+import classes from "./App.css";
 
 import "./App.css";
 import Person from "./Person/Person";
-
-const StyledButton = styled.button`
-        background-color: ${props => props.alt ? 'green' : 'red'};
-        color: white;
-        font: inherit;
-        border 1px solid black;
-        padding: 8px;
-        cursor: pointer;
-        
-        &:hover {
-          background-color: ${props => props.alt ? 'lightgreen' : 'salmon'};
-          color: ${props => props.alt ? 'yellow' : 'black'};
-        }
-`;
 
 class App extends Component {
   state = {
@@ -108,8 +94,9 @@ class App extends Component {
     }; */
 
     // DECLARATION OF VARIABLES
+    
     let Persons = null;
-    let classes = [];
+    let assignedClasses = [];
     let otherState = this.state.otherState;
 
     if (this.state.showPersons) {
@@ -137,22 +124,20 @@ class App extends Component {
     }
 
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      assignedClasses.push("red");
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      assignedClasses.push("bold");
     } else {
-      classes.push("green");
+      assignedClasses.push("green");
     }
 
     return (
       <div className="App">
         <h1>Hello World</h1>
-        <StyledButton alt={this.state.showPersons} onClick={this.togglePersonsHandler}>
-          Switch Name
-        </StyledButton>
+        <button className={classes.button} onClick={this.togglePersonsHandler}>Switch Name</button>
         {Persons}
-        <p className={classes.join(" ")}>{otherState}</p>
+        <p className={assignedClasses.join(" ")}>{otherState}</p>
       </div>
     );
   }
