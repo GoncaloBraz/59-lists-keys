@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Radium, { StyleRoot } from "radium";
 
 import "./App.css";
-import Person from "../components/Persons/Person/Person";
+import Persons from "../components/Persons/Persons";
 
 class App extends Component {
   state = {
@@ -94,31 +93,17 @@ class App extends Component {
     };
 
     // DECLARATION OF VARIABLES
-    let Persons = null;
+    let PersonsShow = null;
     let classes = [];
     let otherState = this.state.otherState;
 
     if (this.state.showPersons) {
-      Persons = (
-        <div>
-          {this.state.persons.map((person, index) => {
-            return (
-              <Person
-                changedPerson={event =>
-                  this.nameChangedHandler(event, person.id)
-                }
-                changedAge={event => this.ageChangedHandler(event, person.id)}
-                name={person.name}
-                age={person.age}
-                click={() => this.deletePersonHandler(index)}
-                key={person.id}
-                changedPerson={event =>
-                  this.nameChangedHandler(event, person.id)
-                }
-              />
-            );
-          })}
-        </div>
+      PersonsShow = (
+        <Persons
+          persons={this.state.persons}
+          clicked={this.deletePersonHandler}
+          changed={this.nameChangedHandler}
+        />
       );
     }
 
@@ -131,9 +116,8 @@ class App extends Component {
       classes.push("green");
     }
 
-
     return (
-      <StyleRoot>
+
         <div className="App">
           <h1>Hello World</h1>
           <button
@@ -142,20 +126,18 @@ class App extends Component {
           >
             Switch Name
           </button>
-          {Persons}
+          {PersonsShow}
           <p className={classes.join(" ")}>{otherState}</p>
         </div>
-      </StyleRoot>
+    
     );
   }
 }
 
-export default Radium(App);
+export default App;
 
 // App.js
 // Root component where our child-components will be rendered
-
-
 
 /*     const head = arr => arr.length > 0 ? arr[1] : "nothing to see" 
     const myArray = []

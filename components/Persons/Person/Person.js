@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
-import Radium, { StyleRoot } from "radium";
 
 import "./Person.css";
-
-
 
 const person = props => {
   const style = {
@@ -13,7 +10,7 @@ const person = props => {
     }
   };
   return (
-    <StyleRoot>
+
       <div className="Person" style={style}>
         <button className="deleteBtn" onClick={props.click}>
           X
@@ -49,8 +46,8 @@ const person = props => {
           </label>
         </div>
       </div>
-    </StyleRoot>
+
   );
 };
 
-export default Radium(person);
+export default person;
